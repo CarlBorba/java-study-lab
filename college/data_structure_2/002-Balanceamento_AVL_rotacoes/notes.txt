@@ -36,5 +36,4 @@ Rotações
     - Realizar uma rotação simples à direita na árvore original
 
 
-
 https://joaoarthurbm.github.io/eda/posts/avl/
