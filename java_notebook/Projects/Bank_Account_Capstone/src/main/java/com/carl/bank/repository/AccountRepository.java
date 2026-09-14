@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AccountRepository {
-    private Map<Integer, Account> accountMap;
+    private HashMap<Integer, Account> accountMap;
 
-    public AccountRepository(Account accountMap) {
+    public AccountRepository() {
         this.accountMap = new HashMap<>();
     }
 
@@ -17,14 +17,14 @@ public class AccountRepository {
         return account;
     }
 
-    public Map<Integer, Account> getAccountMap() {
+    public HashMap<Integer, Account> getAccountMap() {
         return accountMap;
     }
 
-    public String toString(Map<Integer, Account> accountHashMap) {
-        String finalMsg = "";
-        accountHashMap.forEach((id, account) -> System.out.println("Account ID: " + id + " Accounts Holder: " + account.getHolderName() + " balance: " + account.getBalance()));
+    public String toString(HashMap<Integer, Account> accountHashMap) {
+        StringBuilder finalMsgBuilder = new StringBuilder();
+        accountHashMap.forEach((id, account) -> finalMsgBuilder.append("Account ID: " + id + " Accounts Holder: " + account.getHolderName() + " balance: " + account.getBalance() + "\n"));
 
-        return "teste";
+        return finalMsgBuilder.toString();
     }
 }

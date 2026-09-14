@@ -5,11 +5,16 @@ import com.carl.bank.repository.AccountRepository;
 
 public class Main {
     public static void main(String[] args) {
+        AccountRepository accountRepository = new AccountRepository();
+
+
         Account myAccount = new Account(1, "Carl", 1200);
-        AccountRepository accountRepository = new AccountRepository(myAccount);
         accountRepository.save(myAccount);
 
-        System.out.println(accountRepository.getAccountMap());
-        accountRepository.toString(accountRepository.getAccountMap());
+        Account secondAccount = new Account(2, "Jhon", 1200);
+        accountRepository.save(secondAccount);
+
+        System.out.println(accountRepository.toString(accountRepository.getAccountMap()));
+        System.out.println("################");
     }
 }
