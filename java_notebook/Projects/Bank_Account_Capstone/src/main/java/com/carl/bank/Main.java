@@ -14,7 +14,7 @@ public class Main {
         Account secondAccount = new Account(2, "Jhon", 1200);
         accountRepository.save(secondAccount);
 
-        System.out.println(accountRepository.toString(accountRepository.getAccountMap()));
+        System.out.println(accountRepository);
         System.out.println("################");
 
         System.out.println(accountRepository.findById(1));

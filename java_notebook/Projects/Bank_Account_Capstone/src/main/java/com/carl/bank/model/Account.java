@@ -1,14 +1,14 @@
 package com.carl.bank.model;
 
-import java.util.Objects;
+import java.math.BigDecimal;import java.util.Objects;
 
 public class Account {
     private final int id;
     private String holderName;
-    private double balance;
+    private BigDecimal balance;
 
     // CONSTRUCTOR
-    public Account(int id, String holderName, double balance) {
+    public Account(int id, String holderName, BigDecimal balance) {
         this.id = id;
         this.holderName = holderName;
         this.balance = balance;
@@ -27,12 +27,8 @@ public class Account {
         this.holderName = holderName;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 
 
@@ -50,5 +46,5 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account ID: " + id + " Accounts Holder: " + holderName + " balance: " + balance + "\n";
+        return "Account ID: " + id + " Accounts Holder: " + holderName + " balance: " + balance;
     }}

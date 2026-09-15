@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class AccountRepository {
-    private HashMap<Integer, Account> accountMap;
+    private Map<Integer, Account> accountMap;
 
     public AccountRepository() {
         this.accountMap = new HashMap<>();
@@ -18,16 +18,14 @@ public class AccountRepository {
         return account;
     }
 
-    public HashMap<Integer, Account> getAccountMap() {
-        return accountMap;
+    public Optional<Account> findById(int id) {
+        return Optional.ofNullable(accountMap.get(id));
     }
 
-    public Optional<Account> findById(int id) {
-        return Optional.ofNullable(accountMap.get(id)); // here will have a custom exception
-    }
-    public String toString(HashMap<Integer, Account> accountHashMap) {
+    @Override
+    public String toString() {
         StringBuilder finalMsgBuilder = new StringBuilder();
-        accountHashMap.forEach((id, account) -> finalMsgBuilder.append("Account ID: " + id + " Accounts Holder: " + account.getHolderName() + " balance: " + account.getBalance() + "\n"));
+        accountMap.forEach((id, account) -> finalMsgBuilder.append(account));
 
         return finalMsgBuilder.toString();
     }
