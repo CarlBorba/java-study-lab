@@ -4,6 +4,7 @@ import com.carl.bank.model.Account;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class AccountRepository {
     private HashMap<Integer, Account> accountMap;
@@ -21,6 +22,9 @@ public class AccountRepository {
         return accountMap;
     }
 
+    public Optional<Account> findById(int id) {
+        return Optional.ofNullable(accountMap.get(id)); // here will have a custom exception
+    }
     public String toString(HashMap<Integer, Account> accountHashMap) {
         StringBuilder finalMsgBuilder = new StringBuilder();
         accountHashMap.forEach((id, account) -> finalMsgBuilder.append("Account ID: " + id + " Accounts Holder: " + account.getHolderName() + " balance: " + account.getBalance() + "\n"));

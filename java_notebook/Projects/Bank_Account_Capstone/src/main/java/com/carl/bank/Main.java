@@ -16,5 +16,7 @@ public class Main {
 
         System.out.println(accountRepository.toString(accountRepository.getAccountMap()));
         System.out.println("################");
+
+        System.out.println(accountRepository.findById(1));
     }
 }

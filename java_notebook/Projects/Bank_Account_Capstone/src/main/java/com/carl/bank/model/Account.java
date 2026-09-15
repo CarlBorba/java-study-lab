@@ -47,4 +47,8 @@ public class Account {
     public int hashCode() {
         return Objects.hashCode(id);
     }
-}
+
+    @Override
+    public String toString() {
+        return "Account ID: " + id + " Accounts Holder: " + holderName + " balance: " + balance + "\n";
+    }}
