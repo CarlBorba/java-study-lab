@@ -1,6 +1,7 @@
 package com.carl.bank.model;
 
-import java.math.BigDecimal;import java.util.Objects;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Account {
     private final int id;
@@ -31,6 +32,18 @@ public class Account {
         return balance;
     }
 
+    // Balance
+    public BigDecimal moneyTransferIncome(int value) {
+        BigDecimal bigValue = new BigDecimal(value);
+        balance = balance.add(bigValue);
+        return balance;
+    }
+
+    public BigDecimal moneyTransferOutcome(int value) {
+        BigDecimal bigValue = new BigDecimal(value);
+        balance = balance.subtract(bigValue);
+        return balance;
+    }
 
     @Override
     public boolean equals(Object o) {
