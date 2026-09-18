@@ -1,0 +1,16 @@
+src/
+└── main/
+└── java/
+└── com/carl/bank/
+├── model/
+│   ├── Account.java
+│   └── Transaction.java
+├── repository/
+│   └── AccountRepository.java
+├── exception/
+│   ├── AccountNotFoundException.java
+│   ├── InsufficientBalanceException.java
+│   └── TransactionProcessingException.java
+├── service/
+│   └── BankingService.java
+└── Main.java
