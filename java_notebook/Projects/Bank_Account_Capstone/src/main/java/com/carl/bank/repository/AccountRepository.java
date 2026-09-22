@@ -7,14 +7,14 @@ import java.util.Map;
 import java.util.Optional;
 
 public class AccountRepository {
-    private Map<Integer, Account> accountMap;
+    private final Map<Integer, Account> accountMap;
 
     public AccountRepository() {
         this.accountMap = new HashMap<>();
     }
 
     public Account save(Account account) {
-        accountMap.putIfAbsent(account.getId(), account);
+        accountMap.put(account.getId(), account);
         return account;
     }
 
@@ -24,9 +24,10 @@ public class AccountRepository {
 
     @Override
     public String toString() {
-        StringBuilder finalMsgBuilder = new StringBuilder();
-        accountMap.forEach((id, account) -> finalMsgBuilder.append(account));
-
-        return finalMsgBuilder.toString();
+        StringBuilder sb = new StringBuilder();
+        for (Account account : accountMap.values()) {
+            sb.append(account).append(System.lineSeparator());
+        }
+        return sb.toString();
     }
 }

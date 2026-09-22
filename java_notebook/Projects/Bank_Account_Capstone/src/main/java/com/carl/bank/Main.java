@@ -9,16 +9,15 @@ public class Main {
     public static void main(String[] args) {
         AccountRepository accountRepository = new AccountRepository();
 
-
-        Account myAccount = new Account(1, "Carl", new BigDecimal(1200));
+        Account myAccount = new Account(1, "Carl", new BigDecimal("1200.00"));
         accountRepository.save(myAccount);
 
-        Account secondAccount = new Account(2, "Jhon", new BigDecimal(1200));
+        Account secondAccount = new Account(2, "John", new BigDecimal("1200.00"));
         accountRepository.save(secondAccount);
 
         System.out.println(accountRepository);
         System.out.println("################");
 
-        System.out.println(accountRepository.findById(1));
+        accountRepository.findById(1).ifPresent(System.out::println);
     }
 }
