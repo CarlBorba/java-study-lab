@@ -8,14 +8,12 @@ public class Account {
     private String holderName;
     private BigDecimal balance;
 
-    // CONSTRUCTOR
     public Account(int id, String holderName, BigDecimal balance) {
         this.id = id;
         this.holderName = holderName;
-        this.balance = balance;
+        this.balance = balance != null ? balance : BigDecimal.ZERO;
     }
 
-    // GETTERS & SETTERS
     public int getId() {
         return id;
     }
@@ -32,21 +30,28 @@ public class Account {
         return balance;
     }
 
-    // Balance
-    public BigDecimal moneyTransferIncome(int value) {
-        BigDecimal bigValue = new BigDecimal(value);
-        balance = balance.add(bigValue);
+    public BigDecimal moneyTransferIncome(BigDecimal amount) {
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Income amount must be greater than zero.");
+        }
+        balance = balance.add(amount);
         return balance;
     }
 
-    public BigDecimal moneyTransferOutcome(int value) {
-        BigDecimal bigValue = new BigDecimal(value);
-        balance = balance.subtract(bigValue);
+    public BigDecimal moneyTransferOutcome(BigDecimal amount) {
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Outcome amount must be greater than zero.");
+        }
+        if (amount.compareTo(balance) > 0) {
+            throw new IllegalStateException("Insufficient funds. Transfer amount exceeds balance.");
+        }
+        balance = balance.subtract(amount);
         return balance;
     }
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
         return id == account.id;
@@ -59,5 +64,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account ID: " + id + " Accounts Holder: " + holderName + " balance: " + balance;
-    }}
+        return "Account ID: " + id + ", Holder: " + holderName + ", Balance: " + balance;
+    }
+}
